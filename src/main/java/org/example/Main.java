@@ -147,6 +147,7 @@ public class Main {
                 }
             }
         }
+        
         System.out.println();
         System.out.println("Current High School Student:\n 1: " + eduRes[0][0] + " 2:" + eduRes[0][1]+ " 3:" + eduRes[0][2]+ " 4:" + eduRes[0][3]+ " 5:" + eduRes[0][4]);
         System.out.println("High School Diploma/ GED:\n 1: " + eduRes[1][0] + " 2:" + eduRes[1][1]+ " 3:" + eduRes[1][2]+ " 4:" + eduRes[1][3]+ " 5:" + eduRes[1][4]);
