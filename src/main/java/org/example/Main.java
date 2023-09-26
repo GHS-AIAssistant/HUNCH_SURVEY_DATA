@@ -16,7 +16,7 @@ public class Main {
     static AgeData[] age = new AgeData[6];
     static EduData[] edu = new EduData[5];
 
-    static Responce[] responses = new Responce[114];
+    static Response[] responses = new Response[114];
 
     public static void main(String[] args) {
         try {
@@ -36,12 +36,12 @@ public class Main {
                         break;
                 }
             }
-            wb = new XSSFWorkbook(new File("C:\\Users\\spenc\\IdeaProjects\\HUNCH_SURVEY_DATA\\src\\main\\java\\org\\example\\Problem Survey - HUNCH AI Assistant  (Responses).xlsx"));
+            wb = new XSSFWorkbook(new File("C:\\Users\\spenc\\OneDrive\\Documents\\RandomShit\\SwerveTesting\\HUNCH_SURVEY_DATA\\src\\main\\java\\org\\example\\Problem Survey - HUNCH AI Assistant  (Responses).xlsx"));
             sheet = wb.cloneSheet(0);
 
             for (int i = 0; i < 114; i++) {
                 Row row = sheet.getRow(i+1);
-                responses[i] = new Responce(row.getCell(0).getDateCellValue().toString(),row.getCell(1).getStringCellValue(),row.getCell(2).getStringCellValue(),row.getCell(3).getStringCellValue(),row.getCell(4).getStringCellValue(),row.getCell(5).getStringCellValue(),(int)row.getCell(6).getNumericCellValue() ,(int)row.getCell(7).getNumericCellValue(), row.getCell(8).getStringCellValue());
+                responses[i] = new Response(row.getCell(0).getDateCellValue().toString(),row.getCell(1).getStringCellValue(),row.getCell(2).getStringCellValue(),row.getCell(3).getStringCellValue(),row.getCell(4).getStringCellValue(),row.getCell(5).getStringCellValue(),(int)row.getCell(6).getNumericCellValue() ,(int)row.getCell(7).getNumericCellValue(), row.getCell(8).getStringCellValue());
 
             }
             counting();
@@ -53,7 +53,7 @@ public class Main {
     }
 
     public static void counting(){
-        for(Responce r : responses){
+        for(Response r : responses){
             if(r.age == null || r.edu == null) {
                 System.out.println(r.toString());
             }
@@ -88,12 +88,13 @@ public class Main {
         }
 
         analyze();
+        analyzeAgain();
     }
 
     public static void analyze(){
         int[][] eduRes = new int[5][5];
 
-        for (Responce r : responses){
+        for (Response r : responses){
             switch (r.edu){
                 case "Current High School Student"-> {
                     switch (r.usefulAI) {
@@ -154,6 +155,84 @@ public class Main {
         System.out.println("Undergraduate's:\n 1: " + eduRes[2][0] + " 2:" + eduRes[2][1]+ " 3:" + eduRes[2][2]+ " 4:" + eduRes[2][3]+ " 5:" + eduRes[2][4]);
         System.out.println("Graduate's Degrees/Masters:\n 1: " + eduRes[3][0] + " 2:" + eduRes[3][1]+ " 3:" + eduRes[3][2]+ " 4:" + eduRes[3][3]+ " 5:" + eduRes[3][4]);
         System.out.println("PhD/Doctorate:\n 1: " + eduRes[4][0] + " 2:" + eduRes[4][1]+ " 3:" + eduRes[4][2]+ " 4:" + eduRes[4][3]+ " 5:" + eduRes[4][4]);
+
+    }
+
+    public static void analyzeAgain(){
+        int[][] eduRes = new int[6][5];
+
+        for (Response r : responses){
+            switch (r.age){
+                case "14 or younger"-> {
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[0][0]++;
+                        case 2 -> eduRes[0][1]++;
+                        case 3 -> eduRes[0][2]++;
+                        case 4 -> eduRes[0][3]++;
+                        case 5 -> eduRes[0][4]++;
+                        default -> {}
+                    }
+                }
+                case "15-18"-> {
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[1][0]++;
+                        case 2 -> eduRes[1][1]++;
+                        case 3 -> eduRes[1][2]++;
+                        case 4 -> eduRes[1][3]++;
+                        case 5 -> eduRes[1][4]++;
+                        default -> {}
+                    }
+                }
+                case "19-25" ->{
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[2][0]++;
+                        case 2 -> eduRes[2][1]++;
+                        case 3 -> eduRes[2][2]++;
+                        case 4 -> eduRes[2][3]++;
+                        case 5 -> eduRes[2][4]++;
+                        default -> {}
+                    }
+                }
+                case "26-35" ->{
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[3][0]++;
+                        case 2 -> eduRes[3][1]++;
+                        case 3 -> eduRes[3][2]++;
+                        case 4 -> eduRes[3][3]++;
+                        case 5 -> eduRes[3][4]++;
+                        default -> {}
+                    }
+                }
+                case "36-57" ->{
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[4][0]++;
+                        case 2 -> eduRes[4][1]++;
+                        case 3 -> eduRes[4][2]++;
+                        case 4 -> eduRes[4][3]++;
+                        case 5 -> eduRes[4][4]++;
+                        default -> {}
+                    }
+                }
+                case "58 or older" ->{
+                    switch (r.dailyAI) {
+                        case 1 -> eduRes[5][0]++;
+                        case 2 -> eduRes[5][1]++;
+                        case 3 -> eduRes[5][2]++;
+                        case 4 -> eduRes[5][3]++;
+                        case 5 -> eduRes[5][4]++;
+                        default -> {}
+                    }
+                }
+            }
+        }
+
+        System.out.println();
+        System.out.println("14 or younger:\n 1: " + eduRes[0][0] + " 2:" + eduRes[0][1]+ " 3:" + eduRes[0][2]+ " 4:" + eduRes[0][3]+ " 5:" + eduRes[0][4]);
+        System.out.println("15-18:\n 1: " + eduRes[1][0] + " 2:" + eduRes[1][1]+ " 3:" + eduRes[1][2]+ " 4:" + eduRes[1][3]+ " 5:" + eduRes[1][4]);
+        System.out.println("19-25:\n 1: " + eduRes[2][0] + " 2:" + eduRes[2][1]+ " 3:" + eduRes[2][2]+ " 4:" + eduRes[2][3]+ " 5:" + eduRes[2][4]);
+        System.out.println("26-35:\n 1: " + eduRes[3][0] + " 2:" + eduRes[3][1]+ " 3:" + eduRes[3][2]+ " 4:" + eduRes[3][3]+ " 5:" + eduRes[3][4]);
+        System.out.println("36-57:\n 1: " + eduRes[4][0] + " 2:" + eduRes[4][1]+ " 3:" + eduRes[4][2]+ " 4:" + eduRes[4][3]+ " 5:" + eduRes[4][4]);
+        System.out.println("58 or older:\n 1: " + eduRes[5][0] + " 2:" + eduRes[5][1]+ " 3:" + eduRes[5][2]+ " 4:" + eduRes[5][3]+ " 5:" + eduRes[5][4]);
 
     }
 

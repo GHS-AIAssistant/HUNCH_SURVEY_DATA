@@ -3,7 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-org/example/Problem Survey - HUNCH AI Assistant  (Responses).xlsx
+src/main/java/org/example/Problem Survey - HUNCH AI Assistant  (Responses).xlsx
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

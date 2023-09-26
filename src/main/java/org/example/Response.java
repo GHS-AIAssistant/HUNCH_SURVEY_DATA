@@ -1,10 +1,10 @@
 package org.example;
 
-public class Responce {
+public class Response {
     String time,name, age, edu, astroSpace, typesAI, inSpace;
     int dailyAI, usefulAI;
 
-    public Responce(String time, String name, String age, String edu, String astroSpace, String typesAI, int dailyAI, int usefulAI, String inSpace){
+    public Response(String time, String name, String age, String edu, String astroSpace, String typesAI, int dailyAI, int usefulAI, String inSpace){
         this.time = time;
         this.name = name;
         this.age = age;
